@@ -3,7 +3,7 @@ import webpack from 'webpack';
 
 const paths = {
   app: './src/components/index.js',
-  build: path.join(__dirname, 'build/src/components')
+  build: path.join(__dirname, 'public')
 }
 
 const base = {
@@ -38,12 +38,9 @@ const productionPlugin = new webpack.DefinePlugin({
 const developmentConfig = {
   devtool: 'cheap-module-inline-source-map',
   devServer: {
-    contentBase: paths.build,
-    hot: true,
     inline: true,
     progress: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
 }
 
 export default Object.assign({}, base,
