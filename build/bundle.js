@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,26 +73,110 @@ module.exports = require("react");
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(2);
-module.exports = __webpack_require__(3);
+"use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var listingsData = [{
+  address: '20-34 grand ave',
+  city: 'Ridgewood',
+  state: 'NY',
+  rooms: 3,
+  price: 220000,
+  floorSpace: 2000,
+  extras: ['elevator', 'gym'],
+  homeType: 'Apartment',
+  image: 'http://media.equityapartments.com/images/c_crop,x_0,y_0,w_1920,h_1080/c_fill,w_1920,h_1080/q_80/4206-28/the-kelvin-apartments-exterior.jpg'
+}, {
+  address: '3 universal st',
+  city: 'Miami',
+  state: 'FL',
+  rooms: 2,
+  price: 24666,
+  floorSpace: 1430,
+  extras: ['elevator', 'gym'],
+  homeType: 'Condo',
+  image: 'https://www.adinahotels.com/wp-content/uploads/sites/4/2016/07/adina-melbourne-flinders-street-apartment-hotel-one-and-two-bedroom-apartment-2-2013.jpg'
+}, {
+  address: '1 president plaza',
+  city: 'Richmond',
+  state: 'VA',
+  rooms: 1,
+  price: 345355,
+  floorSpace: 2400,
+  extras: ['elevator', 'gym'],
+  homeType: 'Single Home',
+  image: 'https://c.o0bg.com/rf/image_960w/Boston/2011-2020/2017/01/09/BostonGlobe.com/Lifestyle/Images/doherty_10names04_liv.jpg'
+}, {
+  address: '889 beemore st',
+  city: 'Newark',
+  state: 'NJ',
+  rooms: 0,
+  price: 80000,
+  floorSpace: 1000,
+  extras: ['elevator', 'gym'],
+  homeType: 'Studio',
+  image: 'http://media.equityapartments.com/images/q_50/f_auto/fl_lossy/685-28/oak-park-apartment-homes-kitchen'
+}, {
+  address: '43 hollywood blvd',
+  city: 'Los Angeles',
+  state: 'CA',
+  rooms: 3,
+  price: 603000,
+  floorSpace: 3000,
+  extras: ['elevator', 'gym'],
+  homeType: 'Condo',
+  image: 'http://cdn.freshome.com/wp-content/uploads/2016/02/design-modern-apartment-1-1025x450.jpg'
+}, {
+  address: '2 main st',
+  city: 'Bedstuy',
+  state: 'NY',
+  rooms: 2,
+  price: 220000,
+  floorSpace: 2000,
+  extras: ['elevator', 'pool'],
+  homeType: 'Multi Home',
+  image: 'http://www.theproserve.com/wp-content/uploads/2013/03/apartment-complex-insurance.jpg'
+}, {
+  address: '730 gates ave',
+  city: 'Springfield',
+  state: 'IN',
+  rooms: 1,
+  price: 150000,
+  floorSpace: 2000,
+  extras: ['elevator', 'gym'],
+  homeType: 'Room',
+  image: 'http://www.carolinacouture.com/wood/wp-content/uploads/2014/09/apartment-contemporary-apartment-in-taiwan-by-fertility-design-and-mirror-glass-accent-stylish-and-elegant-apartment-designs-tiny-ass-apartment-design-ideas-apartment-interior.jpg'
+}];
+
+exports.default = listingsData;
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(3);
+module.exports = __webpack_require__(4);
+
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 module.exports = require("babel-polyfill");
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var express = __webpack_require__(4);
-var fs = __webpack_require__(5);
-var template = __webpack_require__(6);
+var express = __webpack_require__(5);
+var fs = __webpack_require__(6);
+var template = __webpack_require__(7);
 
 var server = express();
 server.use('/', express.static('public'));
@@ -104,19 +188,19 @@ server.listen(3000, function () {
 });
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("fs");
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -126,11 +210,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(7);
+var _server = __webpack_require__(8);
 
-__webpack_require__(8);
+__webpack_require__(9);
 
-var _App = __webpack_require__(14);
+var _listings = __webpack_require__(1);
+
+var _listings2 = _interopRequireDefault(_listings);
+
+var _App = __webpack_require__(15);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -138,27 +226,47 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
+var state = {
+  city: 'All',
+  rooms: 0,
+  listingsData: _listings2.default,
+  homeType: 'All',
+  min_price: 0,
+  max_price: 10000000,
+  min_floor_space: 0,
+  max_floor_space: 4000,
+  elevator: false,
+  basement: false,
+  swimming_pool: false,
+  gym: false,
+  filteredData: _listings2.default,
+  populateDropDown: '',
+  sortby: 'price-dsc',
+  search: '',
+  view: 'long'
+};
+
 var content = (0, _server.renderToString)(_react2.default.createElement(_App2.default, null));
 
 var jsPath = 'bundle.js';
 
-var template = '\n<!DOCTYPE html>\n<html lang="en">\n    <head>\n        <meta charset="utf-8">\n        <meta name="viewport" content="width=device-width, initial-scale=1">\n        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">\n        <link rel="stylesheet" href="/styles/index.css">\n            <title>My Universal React App</title>\n    </head>\n    <body>\n        <div id="app">' + content + '</div>\n        <script type="text/javascript" src="' + jsPath + '"></script>\n    </body>\n</html>\n';
+var template = '\n<!DOCTYPE html>\n<html lang="en">\n    <head>\n        <meta charset="utf-8">\n        <meta name="viewport" content="width=device-width, initial-scale=1">\n        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">\n        <link rel="stylesheet" href="/styles/index.css">\n            <title>My Universal React App</title>\n    </head>\n    <body>\n        <div id="app">' + content + '</div>\n          <script>\n            window.INITIAL_STATE = ' + JSON.stringify(state) + '\n          </script>\n        <script type="text/javascript" src="' + jsPath + '"></script>\n    </body>\n</html>\n';
 
 module.exports = template;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-    var content = __webpack_require__(9);
-    var insertCss = __webpack_require__(11);
+    var content = __webpack_require__(10);
+    var insertCss = __webpack_require__(12);
 
     if (typeof content === 'string') {
       content = [[module.i, content, '']];
@@ -188,10 +296,10 @@ module.exports = require("react-dom/server");
   
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)(true);
+exports = module.exports = __webpack_require__(11)(true);
 // imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700);", ""]);
 
@@ -202,7 +310,7 @@ exports.push([module.i, "header {\n  background: #0C002B;\n  color: #FFF;\n  ove
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 /*
@@ -284,17 +392,17 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _stringify = __webpack_require__(12);
+var _stringify = __webpack_require__(13);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _slicedToArray2 = __webpack_require__(13);
+var _slicedToArray2 = __webpack_require__(14);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
@@ -414,19 +522,19 @@ function insertCss(styles) {
 module.exports = insertCss;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("babel-runtime/core-js/json/stringify");
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = require("babel-runtime/helpers/slicedToArray");
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -442,19 +550,19 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = __webpack_require__(15);
+var _Header = __webpack_require__(16);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Sidebar = __webpack_require__(16);
+var _Sidebar = __webpack_require__(17);
 
 var _Sidebar2 = _interopRequireDefault(_Sidebar);
 
-var _ContentList = __webpack_require__(17);
+var _ContentList = __webpack_require__(18);
 
 var _ContentList2 = _interopRequireDefault(_ContentList);
 
-var _listings = __webpack_require__(18);
+var _listings = __webpack_require__(1);
 
 var _listings2 = _interopRequireDefault(_listings);
 
@@ -642,7 +750,7 @@ var App = function (_Component) {
 exports.default = App;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -720,7 +828,7 @@ var Header = function (_Component) {
 exports.default = Header;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -930,7 +1038,7 @@ var Sidebar = function (_Component) {
 exports.default = Sidebar;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1290,90 +1398,6 @@ var ContentList = function (_Component) {
 }(_react.Component);
 
 exports.default = ContentList;
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var listingsData = [{
-  address: '20-34 grand ave',
-  city: 'Ridgewood',
-  state: 'NY',
-  rooms: 3,
-  price: 220000,
-  floorSpace: 2000,
-  extras: ['elevator', 'gym'],
-  homeType: 'Apartment',
-  image: 'http://media.equityapartments.com/images/c_crop,x_0,y_0,w_1920,h_1080/c_fill,w_1920,h_1080/q_80/4206-28/the-kelvin-apartments-exterior.jpg'
-}, {
-  address: '3 universal st',
-  city: 'Miami',
-  state: 'FL',
-  rooms: 2,
-  price: 24666,
-  floorSpace: 1430,
-  extras: ['elevator', 'gym'],
-  homeType: 'Condo',
-  image: 'https://www.adinahotels.com/wp-content/uploads/sites/4/2016/07/adina-melbourne-flinders-street-apartment-hotel-one-and-two-bedroom-apartment-2-2013.jpg'
-}, {
-  address: '1 president plaza',
-  city: 'Richmond',
-  state: 'VA',
-  rooms: 1,
-  price: 345355,
-  floorSpace: 2400,
-  extras: ['elevator', 'gym'],
-  homeType: 'Single Home',
-  image: 'https://c.o0bg.com/rf/image_960w/Boston/2011-2020/2017/01/09/BostonGlobe.com/Lifestyle/Images/doherty_10names04_liv.jpg'
-}, {
-  address: '889 beemore st',
-  city: 'Newark',
-  state: 'NJ',
-  rooms: 0,
-  price: 80000,
-  floorSpace: 1000,
-  extras: ['elevator', 'gym'],
-  homeType: 'Studio',
-  image: 'http://media.equityapartments.com/images/q_50/f_auto/fl_lossy/685-28/oak-park-apartment-homes-kitchen'
-}, {
-  address: '43 hollywood blvd',
-  city: 'Los Angeles',
-  state: 'CA',
-  rooms: 3,
-  price: 603000,
-  floorSpace: 3000,
-  extras: ['elevator', 'gym'],
-  homeType: 'Condo',
-  image: 'http://cdn.freshome.com/wp-content/uploads/2016/02/design-modern-apartment-1-1025x450.jpg'
-}, {
-  address: '2 main st',
-  city: 'Bedstuy',
-  state: 'NY',
-  rooms: 2,
-  price: 220000,
-  floorSpace: 2000,
-  extras: ['elevator', 'pool'],
-  homeType: 'Multi Home',
-  image: 'http://www.theproserve.com/wp-content/uploads/2013/03/apartment-complex-insurance.jpg'
-}, {
-  address: '730 gates ave',
-  city: 'Springfield',
-  state: 'IN',
-  rooms: 1,
-  price: 150000,
-  floorSpace: 2000,
-  extras: ['elevator', 'gym'],
-  homeType: 'Room',
-  image: 'http://www.carolinacouture.com/wood/wp-content/uploads/2014/09/apartment-contemporary-apartment-in-taiwan-by-fertility-design-and-mirror-glass-accent-stylish-and-elegant-apartment-designs-tiny-ass-apartment-design-ideas-apartment-interior.jpg'
-}];
-
-exports.default = listingsData;
 
 /***/ })
 /******/ ]);

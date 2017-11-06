@@ -17,7 +17,7 @@ const base = {
   module: {
     loaders: [
       {test: /\jsx?$/, exclude:/node_modules/, loader: 'babel-loader'},
-      {test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader'}
+      {test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader'}
     ]
   },
   resolve: {
@@ -36,7 +36,7 @@ const productionPlugin = new webpack.DefinePlugin({
 });
 
 const developmentConfig = {
-  devtool: 'cheap-module-inline-source-map',
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
     inline: true,
     progress: true,

@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Sidebar correctly 1`] = `
+<section
+  id="sidebar"
+>
+  <div
+    className="inside"
+  >
+    <h4>
+      Filter
+    </h4>
+    <select
+      className="filters neighborhood"
+      name="city"
+      onChange={[Function]}
+    >
+      <option>
+        All
+      </option>
+    </select>
+    <select
+      className="filters housetype"
+      name="homeType"
+      onChange={[Function]}
+    >
+      <option>
+        All
+      </option>
+    </select>
+    <select
+      className="filters bedrooms"
+      name="rooms"
+      onChange={[Function]}
+    />
+    <div
+      className="filters price"
+    >
+      <span
+        className="title"
+      >
+        Price
+      </span>
+      <input
+        className="min-price"
+        name="min_price"
+        onChange={[Function]}
+        type="text"
+        value={0}
+      />
+      <input
+        className="max-price"
+        name="max_price"
+        onChange={[Function]}
+        type="text"
+        value={10000000}
+      />
+    </div>
+    <div
+      className="filters floor-space"
+    >
+      <span
+        className="title"
+      >
+        Floor Space 
+      </span>
+      <input
+        className="min-floor-space"
+        name="min_floor_space"
+        onChange={[Function]}
+        type="text"
+        value={0}
+      />
+      <input
+        className="max-floor-space"
+        name="max_floor_space"
+        onChange={[Function]}
+        type="text"
+        value={4000}
+      />
+    </div>
+    <div
+      className="filters extras"
+    >
+      <span
+        className="title"
+      >
+        Extras
+      </span>
+      <label
+        htmlFor="extras"
+      >
+        <span>
+          Elevators
+        </span>
+        <input
+          name="elevator"
+          onChange={[Function]}
+          type="checkbox"
+          value="elevator"
+        />
+      </label>
+      <label
+        htmlFor="extras"
+      >
+        <span>
+          Swimming Pool
+        </span>
+        <input
+          name="swimming_pool"
+          onChange={[Function]}
+          type="checkbox"
+          value="swimming_pool"
+        />
+      </label>
+      <label
+        htmlFor="extras"
+      >
+        <span>
+          Basement
+        </span>
+        <input
+          name="basement"
+          onChange={[Function]}
+          type="checkbox"
+          value="basement"
+        />
+      </label>
+      <label
+        htmlFor="extras"
+      >
+        <span>
+          Gym
+        </span>
+        <input
+          name="gym"
+          onChange={[Function]}
+          type="checkbox"
+          value="gym"
+        />
+      </label>
+    </div>
+  </div>
+</section>
+`;

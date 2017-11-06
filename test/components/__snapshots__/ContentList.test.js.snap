@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ContentList 1`] = `
+<section
+  id="content-list"
+>
+  <section
+    className="search-area"
+  >
+    <input
+      name="search"
+      onChange={[Function]}
+      type="text"
+    />
+  </section>
+  <section
+    className="sortby-area"
+  >
+    <div
+      className="results"
+    >
+      7
+       results found
+    </div>
+    <div
+      className="sort-options"
+    >
+      <select
+        className="sortby"
+        name="sortby"
+        onChange={[Function]}
+      >
+        <option
+          value="price-asc"
+        >
+          Highest Price
+        </option>
+        <option
+          value=""
+        >
+          Lowest Price
+        </option>
+      </select>
+      <div
+        className="view"
+      >
+        <i
+          aria-hidden="true"
+          className="fa fa-th-list"
+          onClick={[Function]}
+        />
+        <i
+          aria-hidden="true"
+          className="fa fa-th"
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </section>
+  <section
+    className="listings-results"
+  >
+    Sorry your filter did not match any listing
+  </section>
+  <section
+    id="pagination"
+  >
+    <ul
+      className="pages"
+    >
+      <li>
+        Prev
+      </li>
+      <li
+        className="active"
+      >
+        1
+      </li>
+      <li>
+        2
+      </li>
+      <li>
+        3
+      </li>
+      <li>
+        4
+      </li>
+      <li>
+        5
+      </li>
+      <li>
+        Next
+      </li>
+    </ul>
+  </section>
+</section>
+`;
